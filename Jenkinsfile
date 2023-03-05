@@ -7,7 +7,7 @@ pipeline {
 	SERVICE_NAME="nodejs-container-service"
 	TASK_DEFINITION_NAME="first-run-task-definition"
 	DESIRED_COUNT="1"
-        IMAGE_REPO_NAME="syed-ecr"
+        IMAGE_REPO_NAME="https://ap-south-1.console.aws.amazon.com/ecr/repositories/private/018416181156/syed-ecr?region=ap-south-1"
         IMAGE_TAG="${env.BUILD_ID}"
         REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
 	registryCredential = "demo-admin-user"
