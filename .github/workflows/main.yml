@@ -1,0 +1,23 @@
+name: Deploy File to Server
+
+on:
+  push:
+    branches:
+      - main # Change this to the branch you want to trigger the deployment from
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install SSH Key
+      run: |
+        echo "$SSH_PRIVATE_KEY" > ssh_key.pem
+        chmod 600 ssh_key.pem
+
+    - name: Deploy File
+      run: |
+        scp -i ssh_key.pem path/to/local/file remote_user@remote_server:/path/to/destination/
